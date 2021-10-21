@@ -1,18 +1,16 @@
-import React , {useState} from "react";
+import React  from "react";
 import Stock from "./Stock";
 
-function PortfolioContainer({stocksInProfolio}) {
-  const [updatedStocks, setUpdatedStocks] = useState(stocksInProfolio)
-  console.log(updatedStocks.length)
+function PortfolioContainer({stocksInProfolio,setStocksInProfolio}) {
+  
   function handleDelete(id){
-    setUpdatedStocks(updatedStocks.filter((stock)=>{
+    setStocksInProfolio(stocksInProfolio.filter((stock)=>{
       return stock.id !== id
     }))
   }
-  const pStock = updatedStocks.map((stock)=>{
+  const pStock = stocksInProfolio.map((stock)=>{
     return <Stock handleClick={handleDelete} key={stock.id} name={stock.name} price={stock.price} id={stock.id}/>
   })
-  console.log(pStock)
   return (
     <div>
       <h2>My Portfolio</h2>
